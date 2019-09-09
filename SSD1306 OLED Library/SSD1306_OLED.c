@@ -59,7 +59,7 @@ static bool _cp437 = false, wrap = true;
 static GFXfontPtr gfxFont;
 
 /* Externs - I2C.c */
-extern I2C_DeviceT I2C_DEV_2;
+extern I2C_DeviceT I2C_DEV_1;
 
 /* Chunk Buffer */
 static unsigned char chunk[17] = {0};
@@ -357,7 +357,7 @@ void display_Init_seq()
     /* Add the reset code, If needed */
 
     /* Send display OFF command */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPLAY_OFF) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPLAY_OFF) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display OFF Command Passed\r\n");
@@ -372,7 +372,7 @@ void display_Init_seq()
     }
 
     /* Set display clock frequency */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_DISP_CLK) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_DISP_CLK) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display CLK Command Passed\r\n");
@@ -387,7 +387,7 @@ void display_Init_seq()
     }
 
     /* Send display CLK command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPCLK_DIV) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPCLK_DIV) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display CLK Command Parameter Passed\r\n");
@@ -402,7 +402,7 @@ void display_Init_seq()
     }
 
     /* Set display multiplex */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_MULTIPLEX) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_MULTIPLEX) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display MULT Command Passed\r\n");
@@ -417,7 +417,7 @@ void display_Init_seq()
     }
 
     /* Send display MULT command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_MULT_DAT) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_MULT_DAT) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display MULT Command Parameter Passed\r\n");
@@ -432,7 +432,7 @@ void display_Init_seq()
     }
 
     /* Set display OFFSET */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_DISP_OFFSET) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_DISP_OFFSET) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display OFFSET Command Passed\r\n");
@@ -447,7 +447,7 @@ void display_Init_seq()
     }
 
     /* Send display OFFSET command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISP_OFFSET_VAL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISP_OFFSET_VAL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display OFFSET Command Parameter Passed\r\n");
@@ -462,7 +462,7 @@ void display_Init_seq()
     }
 
     /* Set display START LINE - Check this command if something weird happens */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_DISP_START_LINE) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_DISP_START_LINE) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display START LINE Command Passed\r\n");
@@ -477,7 +477,7 @@ void display_Init_seq()
     }
 
     /* Enable CHARGEPUMP*/
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CONFIG_CHARGE_PUMP) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CONFIG_CHARGE_PUMP) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display CHARGEPUMP Command Passed\r\n");
@@ -492,7 +492,7 @@ void display_Init_seq()
     }
 
     /* Send display CHARGEPUMP command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CHARGE_PUMP_EN) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CHARGE_PUMP_EN) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display CHARGEPUMP Command Parameter Passed\r\n");
@@ -507,7 +507,7 @@ void display_Init_seq()
     }
 
     /* Set display MEMORYMODE */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_MEM_ADDR_MODE) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_MEM_ADDR_MODE) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display MEMORYMODE Command Passed\r\n");
@@ -522,7 +522,7 @@ void display_Init_seq()
     }
 
     /* Send display HORIZONTAL MEMORY ADDR MODE command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_HOR_MM) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_HOR_MM) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display HORIZONTAL MEMORY ADDR MODE Command Parameter Passed\r\n");
@@ -537,7 +537,7 @@ void display_Init_seq()
     }
 
     /* Set display SEG_REMAP */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SEG_REMAP) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SEG_REMAP) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display SEG_REMAP Command Passed\r\n");
@@ -552,7 +552,7 @@ void display_Init_seq()
     }
 
     /* Set display DIR */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_COMSCANDEC) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_COMSCANDEC) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display DIR Command Passed\r\n");
@@ -567,7 +567,7 @@ void display_Init_seq()
     }
 
     /* Set display COM */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_COMPINS) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_COMPINS) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display COM Command Passed\r\n");
@@ -582,7 +582,7 @@ void display_Init_seq()
     }
 
     /* Send display COM command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CONFIG_COM_PINS) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CONFIG_COM_PINS) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display COM Command Parameter Passed\r\n");
@@ -597,7 +597,7 @@ void display_Init_seq()
     }
 
     /* Set display CONTRAST */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_CONTRAST) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_CONTRAST) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display CONTRAST Command Passed\r\n");
@@ -612,7 +612,7 @@ void display_Init_seq()
     }
 
     /* Send display CONTRAST command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CONTRAST_VAL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_CONTRAST_VAL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display CONTRAST Command Parameter Passed\r\n");
@@ -627,7 +627,7 @@ void display_Init_seq()
     }
 
     /* Set display PRECHARGE */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_PRECHARGE) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_PRECHARGE) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display PRECHARGE Command Passed\r\n");
@@ -642,7 +642,7 @@ void display_Init_seq()
     }
 
     /* Send display PRECHARGE command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_PRECHARGE_VAL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_PRECHARGE_VAL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display PRECHARGE Command Parameter Passed\r\n");
@@ -657,7 +657,7 @@ void display_Init_seq()
     }
 
     /* Set display VCOMH */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_VCOMDETECT) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_VCOMDETECT) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display VCOMH Command Passed\r\n");
@@ -672,7 +672,7 @@ void display_Init_seq()
     }
 
     /* Send display VCOMH command parameter */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_VCOMH_VAL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_VCOMH_VAL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display VCOMH Command Parameter Passed\r\n");
@@ -687,7 +687,7 @@ void display_Init_seq()
     }
 
     /* Set display ALL-ON */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPLAYALLON_RESUME) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPLAYALLON_RESUME) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display ALL-ON Command Passed\r\n");
@@ -702,7 +702,7 @@ void display_Init_seq()
     }
 
     /* Set display to NORMAL-DISPLAY */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_NORMAL_DISPLAY) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_NORMAL_DISPLAY) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display NORMAL-DISPLAY Command Passed\r\n");
@@ -717,7 +717,7 @@ void display_Init_seq()
     }
 
     /* Set display to DEACTIVATE_SCROLL */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DEACTIVATE_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DEACTIVATE_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display DEACTIVATE_SCROLL Command Passed\r\n");
@@ -732,7 +732,7 @@ void display_Init_seq()
     }
 
     /* Set display to TURN-ON */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPLAYON) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DISPLAYON) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display TURN-ON Command Passed\r\n");
@@ -762,7 +762,7 @@ void transfer()
         chunk[0] = 0x40;
         for(loop_2 = 1; loop_2 < 17; loop_2++)
             chunk[loop_2] = screen[index++];
-        if(i2c_multiple_writes(I2C_DEV_2.fd_i2c, 17, chunk) == 17)
+        if(i2c_multiple_writes(I2C_DEV_1.fd_i2c, 17, chunk) == 17)
         {
 #ifdef SSD1306_DBG
             printf("Chunk written to RAM - Completed\r\n");
@@ -812,7 +812,7 @@ void Init_Col_PG_addrs(unsigned char col_start_addr, unsigned char col_end_addr,
                        unsigned char pg_start_addr, unsigned char pg_end_addr)
 {
     /* Send COLMN address setting command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_COL_ADDR) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_COL_ADDR) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display COLMN Command Passed\r\n");
@@ -827,7 +827,7 @@ void Init_Col_PG_addrs(unsigned char col_start_addr, unsigned char col_end_addr,
     }
 
     /* Set COLMN start address */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, col_start_addr) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, col_start_addr) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display COLMN Start Address param Passed\r\n");
@@ -842,7 +842,7 @@ void Init_Col_PG_addrs(unsigned char col_start_addr, unsigned char col_end_addr,
     }
 
     /* Set COLMN end address */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, col_end_addr) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, col_end_addr) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display COLMN End Address param Passed\r\n");
@@ -857,7 +857,7 @@ void Init_Col_PG_addrs(unsigned char col_start_addr, unsigned char col_end_addr,
     }
 
     /* Send PAGE address setting command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_PAGEADDR) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_PAGEADDR) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display PAGE Command Passed\r\n");
@@ -872,7 +872,7 @@ void Init_Col_PG_addrs(unsigned char col_start_addr, unsigned char col_end_addr,
     }
 
     /* Set PAGE start address */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, pg_start_addr) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, pg_start_addr) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display PAGE Start Address param Passed\r\n");
@@ -887,7 +887,7 @@ void Init_Col_PG_addrs(unsigned char col_start_addr, unsigned char col_end_addr,
     }
 
     /* Set PAGE end address */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, pg_end_addr) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, pg_end_addr) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display PAGE End Address param Passed\r\n");
@@ -939,7 +939,7 @@ void setRotation(unsigned char x)
 void startscrollright(unsigned char start, unsigned char stop)
 {
     /* Send SCROLL horizontal right command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_RIGHT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_RIGHT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display HORIZONTAL SCROLL RIGHT Command Passed\r\n");
@@ -954,7 +954,7 @@ void startscrollright(unsigned char start, unsigned char stop)
     }
 
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_1 Passed\r\n");
@@ -968,7 +968,7 @@ void startscrollright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_2 Passed\r\n");
@@ -982,7 +982,7 @@ void startscrollright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_3 Passed\r\n");
@@ -996,7 +996,7 @@ void startscrollright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_4 Passed\r\n");
@@ -1010,7 +1010,7 @@ void startscrollright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_5 Passed\r\n");
@@ -1024,7 +1024,7 @@ void startscrollright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0xFF) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0xFF) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_6 Passed\r\n");
@@ -1038,7 +1038,7 @@ void startscrollright(unsigned char start, unsigned char stop)
         exit(1);
     }
     /* Send SCROLL Activate command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("SCROLL Activate Command Passed\r\n");
@@ -1066,7 +1066,7 @@ void startscrollright(unsigned char start, unsigned char stop)
 void startscrollleft(unsigned char start, unsigned char stop)
 {
     /* Send SCROLL horizontal left command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_LEFT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_LEFT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display HORIZONTAL SCROLL LEFT Command Passed\r\n");
@@ -1081,7 +1081,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
     }
 
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_1 Passed\r\n");
@@ -1095,7 +1095,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_2 Passed\r\n");
@@ -1109,7 +1109,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_3 Passed\r\n");
@@ -1123,7 +1123,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_4 Passed\r\n");
@@ -1137,7 +1137,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_5 Passed\r\n");
@@ -1151,7 +1151,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0xFF) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0xFF) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("HORI_SR Param_6 Passed\r\n");
@@ -1165,7 +1165,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
         exit(1);
     }
     /* Send SCROLL Activate command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("SCROLL Activate Command Passed\r\n");
@@ -1193,7 +1193,7 @@ void startscrollleft(unsigned char start, unsigned char stop)
 void startscrolldiagright(unsigned char start, unsigned char stop)
 {
     /* Send SCROLL diagonal right command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_VERTICAL_SCROLL_AREA) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_VERTICAL_SCROLL_AREA) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display DIAGONAL SCROLL RIGHT Command Passed\r\n");
@@ -1208,7 +1208,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
     }
 
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_1 Passed\r\n");
@@ -1222,7 +1222,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_LCDHEIGHT) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_LCDHEIGHT) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_2 Passed\r\n");
@@ -1236,7 +1236,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Cmd Passed\r\n");
@@ -1250,7 +1250,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_3 Passed\r\n");
@@ -1264,7 +1264,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_4 Passed\r\n");
@@ -1278,7 +1278,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_5 Passed\r\n");
@@ -1292,7 +1292,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_6 Passed\r\n");
@@ -1306,7 +1306,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x01) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x01) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_5 Passed\r\n");
@@ -1321,7 +1321,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
     }
 
     /* Send SCROLL Activate command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("SCROLL Activate Command Passed\r\n");
@@ -1349,7 +1349,7 @@ void startscrolldiagright(unsigned char start, unsigned char stop)
 void startscrolldiagleft(unsigned char start, unsigned char stop)
 {
     /* Send SCROLL diagonal right command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_VERTICAL_SCROLL_AREA) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_SET_VERTICAL_SCROLL_AREA) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Display DIAGONAL SCROLL RIGHT Command Passed\r\n");
@@ -1364,7 +1364,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
     }
 
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_1 Passed\r\n");
@@ -1378,7 +1378,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_LCDHEIGHT) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_LCDHEIGHT) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_2 Passed\r\n");
@@ -1392,7 +1392,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_VERTICAL_AND_LEFT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_VERTICAL_AND_LEFT_HORIZONTAL_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("Cmd Passed\r\n");
@@ -1406,7 +1406,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_3 Passed\r\n");
@@ -1420,7 +1420,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, start) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_4 Passed\r\n");
@@ -1434,7 +1434,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x00) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_5 Passed\r\n");
@@ -1448,7 +1448,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, stop) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_6 Passed\r\n");
@@ -1462,7 +1462,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
         exit(1);
     }
 
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, 0x01) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, 0x01) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("DIAG_SR Param_5 Passed\r\n");
@@ -1477,7 +1477,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
     }
 
     /* Send SCROLL Activate command  */
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_ACTIVATE_SCROLL) == I2C_TWO_BYTES)
     {
 #ifdef SSD1306_DBG
         printf("SCROLL Activate Command Passed\r\n");
@@ -1500,7 +1500,7 @@ void startscrolldiagleft(unsigned char start, unsigned char stop)
  ****************************************************************/
 void stopscroll()
 {
-    if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DEACTIVATE_SCROLL) == I2C_TWO_BYTES)
+    if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_DEACTIVATE_SCROLL) == I2C_TWO_BYTES)
     {
         printf("De-activate SCROLL Command Passed\r\n");
     }
@@ -1521,7 +1521,7 @@ void invertDisplay(unsigned char i)
 {
     if (i)
     {
-        if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_INVERTDISPLAY) == I2C_TWO_BYTES)
+        if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_INVERTDISPLAY) == I2C_TWO_BYTES)
         {
             printf("Display Inverted - Passed\r\n");
         }
@@ -1533,7 +1533,7 @@ void invertDisplay(unsigned char i)
     }
     else
     {
-        if(i2c_write_register(I2C_DEV_2.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_NORMAL_DISPLAY) == I2C_TWO_BYTES)
+        if(i2c_write_register(I2C_DEV_1.fd_i2c, SSD1306_CNTRL_CMD, SSD1306_NORMAL_DISPLAY) == I2C_TWO_BYTES)
         {
             printf("Display Normal - Passed\r\n");
         }
