@@ -19,7 +19,7 @@
 #include "SSD1306_OLED.h"
 
 /* Externs - I2C.c */
-extern I2C_DeviceT I2C_DEV_2;
+extern I2C_DeviceT I2C_DEV_1;
 
 /* Oh Compiler-Please leave me as is */
 volatile unsigned char flag = 0;
@@ -34,13 +34,13 @@ void ALARMhandler(int sig)
 int main()
 {
     /* Initialize I2C bus and connect to the I2C Device */
-    if(init_i2c_dev2(SSD1306_OLED_ADDR) == 0)
+    if(init_i2c_dev1(SSD1306_OLED_ADDR) == 0)
     {
-        printf("(Main)i2c-2: Bus Connected to SSD1306\r\n");
+        printf("(Main)i2c-1: Bus Connected to SSD1306\r\n");
     }
     else
     {
-        printf("(Main)i2c-2: OOPS! Something Went Wrong\r\n");
+        printf("(Main)i2c-1: OOPS! Something Went Wrong\r\n");
         exit(1);
     }
 
