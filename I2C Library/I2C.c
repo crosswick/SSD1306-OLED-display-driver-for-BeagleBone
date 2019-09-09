@@ -42,6 +42,7 @@ SOFTWARE.
 
 
 /* Exposed objects for i2c-x */
+I2C_DeviceT I2C_DEV_1;
 I2C_DeviceT I2C_DEV_2;
 
 /****************************************************************
@@ -246,6 +247,29 @@ void config_i2c_struct(char *i2c_dev_path, unsigned char slave_addr, I2C_DeviceP
 
 /****************************************************************
  * Function Name : init_i2c_dev1
+ * Description   : Connect the i2c-1 bus to the slave device
+ * Returns       : 0 on success, -1 on failure
+ * Params        @slave_addr: Slave device address
+ ****************************************************************/
+int init_i2c_dev1(unsigned char slave_address)
+{
+	config_i2c_struct(I2C_DEV1_PATH, slave_address, &I2C_DEV_1);
+	if(Open_device(I2C_DEV_1.i2c_dev_path, &I2C_DEV_1.fd_i2c) == -1)
+	{
+		perror("I2C: Failed to open device |");
+		return -1;
+	}
+	if(Set_slave_addr(I2C_DEV_1.fd_i2c, I2C_DEV_1.i2c_slave_addr) == -1)
+	{
+		perror("I2C: Failed to connect to slave device |");
+		return -1;
+	}
+
+	return 0;
+}
+
+/****************************************************************
+ * Function Name : init_i2c_dev2
  * Description   : Connect the i2c-2 bus to the slave device
  * Returns       : 0 on success, -1 on failure
  * Params        @slave_addr: Slave device address
