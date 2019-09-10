@@ -1,5 +1,5 @@
 # SSD1306-OLED-display-driver-for-BeagleBone
-This is a SSD1306 OLED Display Library fully compatible with the BeagleBone. This fork is a work-in-progress tailored to a Bela Original or Bela Mini system.
+This is a SSD1306 OLED Display Library fully compatible with the BeagleBone. This fork is a work-in-progress tailored to a Bela Original or Bela Mini system that need to use the i2c-1 port.
 
 The Library has 3 components:
 1. I2C component for enabling communication between the BeagleBone and display.
